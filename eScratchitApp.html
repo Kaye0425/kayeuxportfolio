@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +17,33 @@
             color: black;
             background-color: white;
             overflow-x: hidden;
+        }
+
+        #preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #preloader .spinner {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         nav {
@@ -89,7 +118,7 @@
             line-height: 1.5;
             text-align: left;
             transition: color 0.3s;
-            color: #636363 !important;  
+            color: #636363 !important; /* Change the color here */
         }
         
         header.intro .arrow-down {
@@ -192,7 +221,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            background: url('your-image-url.jpg') no-repeat center center/cover;  
+            background: url('your-image-url.jpg') no-repeat center center/cover; /* Add 'cover' here */
         }
         .footer-link {
             color: #444; /* dark gray */
@@ -226,7 +255,7 @@
             position: fixed;
             bottom: 40px;
             right: 40px;
-            display: none;  
+            display: none; /* Hide the button initially */
             align-items: center;
             cursor: pointer;
         }
@@ -240,42 +269,12 @@
             color: black;
             border-radius: 5px;
         }
-
-        /* Preloader styles */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;  
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        .spinner {
-            border: 16px solid #f3f3f3; /* Light grey */
-            border-top: 16px solid #444444; /* Dark grey */
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body>
-    <!-- Preloader -->
     <div id="preloader">
         <div class="spinner"></div>
     </div>
-
     <nav>
         <div class="logo"><img src="aboutMe/AprilKaye.svg" height="65px" width="auto" alt="logo"></div>
         <ul>
@@ -288,42 +287,68 @@
         <h1>e-ScratchIt</h1>
         <div class="subtext">Scratch it app where we enhanced convenience and reach</div>
     </header>
-    <section class="portfolio-content" id="portfolio1">
-        <h2>Portfolio Section</h2>
-        <p>Some content about the portfolio goes here...</p>
-        <img src="images/scratchit.png" alt="ScratchIt project image">
-    </section>
-    <footer>
-        <div class="logo-footer">Footer Logo</div>
-        <p class="footer-details">Footer details go here...</p>
+    <main class="portfolio-content">
+        <img src="playerApp/playerApp1.svg" alt="playerApp1" loading="eager|lazy" class="first-image">
+        <img src="playerApp/playerApp2.svg" alt="playerApp2" loading="eager|lazy">
+        <img src="playerApp/playerApp2-a.svg" alt="playerApp2-a" loading="eager|lazy" class="trigger-back-to-top">
+        <img src="playerApp/playerApp3.svg" alt="playerApp3" loading="eager|lazy">
+        <img src="playerApp/playerApp3-a.svg" alt="playerApp3-a" loading="eager|lazy">
+        <img src="playerApp/playerApp4.svg" alt="playerApp4" loading="eager|lazy">
+        <img src="playerApp/playerApp4-a.svg" alt="playerApp4-a" loading="eager|lazy">
+        <img src="playerApp/playerApp5.svg" alt="playerApp5" loading="eager|lazy">
+        <img src="playerApp/playerApp5-a.svg" alt="playerApp5-a" loading="eager|lazy">
+        <img src="playerApp/playerApp6.svg" alt="playerApp6" loading="eager|lazy">
+        <img src="playerApp/playerApp6-a.svg" alt="playerApp6" loading="eager|lazy">
+        <img src="playerApp/playerApp7.svg" alt="playerApp7" loading="eager|lazy">
+        <img src="playerApp/playerApp7-a.svg" alt="playerApp7-a" loading="eager|lazy">
+        <img src="playerApp/playerApp7-b.svg" alt="playerApp7-b" loading="eager|lazy">
+        <img src="playerApp/playerApp8.svg" alt="playerApp8" loading="eager|lazy">
+        <img src="playerApp/playerApp8-a.svg" alt="playerApp8-a" loading="eager|lazy">
+        <img src="playerApp/playerApp8-b.svg" alt="playerApp8-b" loading="eager|lazy">
+        <img src="playerApp/playerApp8-c.svg" alt="playerApp8-c" loading="eager|lazy">
+        <img src="playerApp/playerApp8-d.svg" alt="playerApp8-d" loading="eager|lazy">
+        <img src="playerApp/playerApp8-e.svg" alt="playerApp8-e" loading="eager|lazy">
+        <img src="playerApp/playerApp8-f.svg" alt="playerApp8-f" loading="eager|lazy">
+        <img src="playerApp/playerApp8-g.svg" alt="playerApp8-f" loading="eager|lazy">
+        <img src="playerApp/playerApp9.svg" alt="playerApp9" loading="eager|lazy">
+        <img src="playerApp/playerApp9-a.svg" alt="playerApp9-a" loading="eager|lazy">
+        <img src="playerApp/playerApp10.svg" alt="playerApp10" loading="eager|lazy">
+        <img src="playerApp/playerApp10-a.svg" alt="playerApp10-a" loading="eager|lazy">
+        <img src="playerApp/playerApp11.svg" alt="playerApp11" loading="eager|lazy">
+        <a href="eScratchit_AdminSite.html"><img src="playerApp/playerApp12.svg" alt="playerApp12" loading="eager|lazy"></a>
+    </main>
+    <footer id="contact" style="background-color: #F5F5F5; padding: 40px;">
+        <div class="logo-footer"><img src="images/footerLogo.svg" height="65px" width="auto" alt="logo"></div>
+        <div class="footer-details" style="margin-top: 20px;">
+            <p>Questions or inquiries? <a href="mailto:hello@yourdomain.com" class="footer-link">Contact us</a></p>
+        </div>
     </footer>
 
-    <div class="back-to-top">
-        <img src="aboutMe/ArrowUp.svg" height="40px" width="auto" alt="Back to top arrow">
-        <span>Back to Top</span>
+    <div class="back-to-top" id="backToTopBtn">
+        <span>&uarr;</span> Back to Top
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            window.addEventListener('load', function() {
-                document.getElementById('preloader').style.display = 'none';
-            });
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none'; // Hide preloader when page is fully loaded
+        });
 
-            const backToTopButton = document.querySelector('.back-to-top');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    backToTopButton.style.display = 'flex';
-                } else {
-                    backToTopButton.style.display = 'none';
-                }
-            });
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTopBtn');
 
-            backToTopButton.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'flex'; // Show back to top button after scrolling down 300px
+            } else {
+                backToTopBtn.style.display = 'none'; // Hide back to top button if not scrolled down enough
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll to top
             });
         });
     </script>
