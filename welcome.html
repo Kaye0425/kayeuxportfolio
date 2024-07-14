@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e; /* Dark gray, but not black */
+            font-family: 'Libre Baskerville', serif;
+            color: white;
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 0;
+            text-align: center;
+            padding: 20px;
+            animation: wave 5s infinite;
+            opacity: 0.05;
+        }
+
+        .animated-background p {
+            font-size: 70px; 
+            color: transparent;
+            -webkit-text-stroke: 1px white; /* Stroke effect */
+            white-space: pre-wrap; /* Preserve whitespace for responsive breaks */
+            padding: 20px;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0) translateX(-5px);
+            }
+            50% {
+                transform: translateY(-15px) translateX(5px);
+            }
+        }
+
+        .misspelled {
+            color: white;
+            font-size: 150px; /* Bigger font size */
+            position: relative;
+            cursor: pointer;
+            font-family: 'Libre Baskerville', serif;
+            background: none !important; /* Remove background */
+        }
+
+        .misspelled::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px; /* Lowered the underline */
+            width: 100%;
+            height: 12px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="12" viewBox="0 0 100 12"><path d="M0,6 L10,0 L20,6 L30,0 L40,6 L50,0 L60,6 L70,0 L80,6 L90,0 L100,6" stroke="red" stroke-width="2" fill="none"/></svg>') repeat-x;
+        }
+
+        .context-menu {
+            position: absolute;
+            display: none;
+            background-color: #2e2e2e; /* Dark mode style */
+            border: 1px solid #444; /* Darker border */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            color: white; /* White text */
+        }
+
+        .context-menu ul {
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .context-menu ul li {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .context-menu ul li:hover {
+            background-color: #555; /* Darker hover effect */
+        }
+
+        .context-menu ul li.disabled {
+            color: #888; /* Disabled color */
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background">
+        <p id="animated">As a UI/UX Designer with 7 years of experience in the design industry, you'll find me not only crafting interfaces but also navigating Nintendo Switch adventures, cuddling with our feline friends, and diving into chess challenges. It just dawned on me: being a chess player mirrors being a UI/UX designer; both are all about creatively cracking problems!</p>
+    </div>
+
+    <div class="misspelled" id="misspelled-word">Kaey</div>
+
+    <div class="context-menu" id="context-menu">
+        <ul>
+            <li class="disabled">Cut</li>
+            <li class="disabled">Copy</li>
+            <li class="disabled">Paste</li>
+            <li class="divider"></li>
+            <li class="suggestion">kei</li>
+            <li class="suggestion">key</li>
+            <li class="suggestion">Kaye</li>
+        </ul>
+    </div>
+
+    <script>
+        const misspelledWord = document.getElementById('misspelled-word');
+        const contextMenu = document.getElementById('context-menu');
+        
+        // Event listener for desktop (right-click)
+        misspelledWord.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+            toggleContextMenu(event.clientX, event.clientY);
+        });
+
+        // Event listener for touch screens (tap)
+        misspelledWord.addEventListener('touchstart', function(event) {
+            event.preventDefault();
+            const touch = event.touches[0];
+            toggleContextMenu(touch.clientX, touch.clientY);
+        });
+
+        // Function to toggle context menu visibility
+        function toggleContextMenu(mouseX, mouseY) {
+            contextMenu.style.top = `${mouseY}px`;
+            contextMenu.style.left = `${mouseX}px`;
+            contextMenu.style.display = 'block';
+        }
+
+        // Event listener to close context menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('#context-menu') && event.target !== misspelledWord) {
+                contextMenu.style.display = 'none';
+            }
+        });
+
+        // Handle suggestion selection
+        document.querySelectorAll('.suggestion').forEach(item => {
+            item.addEventListener('click', function(event) {
+                const chosenWord = event.target.textContent;
+                if (chosenWord === 'Kaye') {
+                    window.location.href = 'index.html';
+                } else {
+                    location.reload();
+                }
+            });
+        });
+
+        function updateText(text) {
+            let delay = 200;
+            let h1 = document.getElementById("animated");
+            h1.innerHTML = text
+                .split("")
+                .map(letter => {
+                    console.log(letter);
+                    return `<span>` + letter + `</span>`;
+                })
+                .join("");
+
+            Array.from(h1.children).forEach((span, index) => {
+                setTimeout(() => {
+                    span.classList.add("wavy");
+                }, index * 60 + delay);
+            });
+        }
+
+        updateText("As a UI/UX Designer with 7 years of experience in the design industry, you'll find me not only crafting interfaces but also navigating Nintendo Switch adventures, cuddling with our feline friends, and diving into chess challenges. It just dawned on me: being a chess player mirrors being a UI/UX designer; both are all about creatively cracking problems.");
+    </script>
+</body>
+</html>

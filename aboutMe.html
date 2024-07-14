@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="mstile-150x150.ico" />
+    <title>April Kaye</title>
+    <!-- Include FontAwesome for the play icon --> 
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Plyr JS -->
+    <script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400&family=Bebas+Neue&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            color: black;
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 40px 40px 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: black;
+            transition: color 0.3s;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 40px;
+        }
+
+        nav ul li a {
+            color: gray;
+            text-decoration: none;
+            padding: 5px 10px;
+            font-weight: 400;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a.active {
+            color: black;
+            border-bottom: 2px solid black;
+        }
+
+        .about-me {
+            position: relative;
+            height: 100vh;
+            background-attachment: fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        #about {
+            background-image: url('aboutme/interests.jpg');  
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 48%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 40px;
+        }
+
+        .about-me-content {
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1; /* Ensure it's above the overlay */
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .about-me-content h2 {
+            font-family: 'Libre Baskerville', serif;
+            color: rgb(209, 209, 209);
+            margin: 0;
+            font-size: 15px;
+            text-shadow: 1px 1px 2px rgba(1, 1, 1, 1);  
+        }
+
+        .about-me-content p {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 100;
+            margin: 25px 0 0 0;
+            font-size: 30px;
+            text-shadow: 1px 1px 2px rgba(1, 1, 1, 1); 
+        }
+
+        .view-project {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-weight: 100;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-link {
+            color: #444; /* dark gray */
+            text-decoration: none;
+            border-bottom: 2px solid #ddd; /* light gray */
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+
+        .footer-link:hover,
+        .footer-link:focus {
+            color: gray;
+            border-bottom-color: #aaa; /* lighter gray */
+        }
+
+        .footer-link:active {
+            color: #444; /* dark gray */
+            border-bottom-color: #aaa; /* lighter gray */
+        }
+
+        .footer-details {
+            color: #888; /* lighter gray */
+        }
+
+        .logo-footer {
+            font-size: 36px;
+            font-weight: bold;
+            color: black;
+            transition: color 0.3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .scrolled nav {
+            background-color: #444;
+        }
+
+        .scrolled nav .logo {
+            color: lightgray;
+        }
+
+        .scrolled nav ul li a {
+            color: lightgray;
+        }
+
+        .scrolled nav ul li a.active {
+            color: black;
+            border-bottom: 2px solid black;
+        }
+
+        /* Additional Styles for Q&A Section */
+        .qa-section {
+            background-color: #fcfcfc;
+            padding: 5% 10%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two columns */
+            grid-template-rows: auto auto; /* Two rows */
+            gap: 5%; /* Gap between items */
+        }
+
+        .qa-item {
+            background-color: #ffffff;
+            padding: 8%;
+            border-radius: 10px;
+        }
+
+        .question {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .answer {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-left: 40px; 
+            white-space: pre-wrap;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .question {
+                font-size: 20px;
+            }
+
+            .answer {
+                font-size: 16px;
+            }
+        }
+
+        /* Additional Styles for Favorite Song and Book Section */
+        .favorites-section {
+            height: 90%;
+            background-color: #fcfcfc;
+            padding: 40px;
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch; /* Ensure items stretch to full height */
+            gap: 5%; /* Add 20px gap between items */
+        }
+
+        .favorite-item {
+            text-align: center;
+            background-color: #f0f0f0; /* Light gray background */
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1; /* Make items stretch to fill the available space evenly */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .favorite-item img {
+            width: 380px; 
+            height: 350px; 
+            border-radius: 5%;
+            object-fit: cover;
+            margin-bottom: 30px; 
+        }
+        .favorite-item p {
+            font-family: 'Bebas Neue', sans-serif; 
+            margin: 10px 0;
+            font-size: 20px; 
+        }
+
+        .favorite-item .fave_title {
+            font-family: 'Libre Baskerville', serif; 
+            font-size: 20px; 
+        }
+        .favorite-item .fave_author {
+            font-family: 'Libre Baskerville', serif;
+            font-weight: lighter;
+            font-size: 15px; 
+        }
+        .audio-player {
+            position: relative;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .audio-player img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: white;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .play-button:hover {
+            opacity: 1;
+        }
+
+        audio {
+            display: none;
+        }
+
+        /* Additional Section Styles */
+        .additional-section {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+
+        .additional-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .additional-content p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .additional-content p:first-child {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30px;
+            margin-top: 5%;
+            margin-left: 5%;
+            padding-left: 20px;
+        }
+
+        /* Logo Section Styles */
+        .logos-section {
+            padding: 80px;
+            background-color: #f0f0f0;
+        }
+
+        .logos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo-item {
+            width: 100px;
+            text-align: center;
+        }
+
+        .logo-item img {
+            width: 100%;
+            /*filter: brightness(0); */
+        }
+
+        /* Adjusting for two rows */
+        .logo-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 3%;
+            gap: 15%;
+        }
+
+        .logo-row:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body onload="addEvent()">
+    <nav>
+        <div class="logo"><img src="aboutMe/AprilKaye.svg" height="65px" width="auto" alt="logo"></div>
+        <ul>
+            <li><a href="helloAgain.html">Work</a></li>
+            <li><a href="aboutMe.html" class="active">About</a></li>
+        </ul>
+    </nav>
+    
+    <!-- About Me Section -->
+    <section class="about-me" id="about">
+        <!--<div class="overlay">
+        </div>
+        <div class="about-me-content">
+            <h2>About me</h2>
+            <p>As a UI/UX Designer with 7 years of experience in the design industry,
+                you'll find me not only crafting interfaces but also navigating Nintendo Switch adventures,
+                cuddling with our feline friends, and diving into chess challenges.
+                It just dawned on me: being a chess player mirrors being a UI/UX designer; both are all 
+                about solving problems creatively!</p>
+        </div>-->
+    </section>
+
+    <!-- Favorite Song and Book Section -->
+    <section class="favorites-section">
+        <div class="favorite-item audio-player">
+            <div class="plyr__video-embed" id="player">
+                <iframe src="https://open.spotify.com/embed/track/4KGEGS9xEzY6YtTBNkN9NJ" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <p>Favorite Song</p>
+            <p class="fave_title">Steal My Heart Away</p>
+            <p class="fave_author">The Paper Kites</p>
+        </div>
+        <div class="favorite-item">
+            <img src="aboutMe/flux.jpg" alt="Favorite Book">
+            <p>Favorite Book</p>
+            <p class="fave_title">Flux</p>
+            <p class="fave_author">Orion Carloto</p>
+        </div>
+    </section>
+
+    <!-- Additional Section -->
+    <section class="additional-section">
+        <div class="additional-content">
+            <p class="additional-heading">Hello, I'm April Kaye V. Muyalde</p>
+            <p>
+                I earned my Associate's degree in Information Technology from the Informatics Computer International Institute in Baguio City, Philippines. My career as a UX designer started at Digital Arts Sales Corporation, where I was given the opportunity to enroll in a UI/UX course on Coursera. Through this course, I honed skills in creative problem-solving, empathy, and navigating complex processes to meet client objectives. Although I wasn't able to complete all the courses, I continue to stay updated on UI/UX developments through LinkedIn blogs.
+            </p>
+            <p>To advance my career and expand my horizons, I intend to start blogging on Medium to share insights and personal experiences.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Logos Section -->
+    <section class="logos-section">
+        <div class="logos-container">
+            <div class="logo-row">
+                <div class="logo-item">
+                    <img src="aboutMe/Landbank.svg" alt="Landbank">
+                </div>
+                <div class="logo-item">
+                    <img src="aboutMe/BDO.svg" ablt="BDO">
+                </div>
+                <div class="logo-item">
+                    <img src="aboutMe/dasc.svg" alt="Digital Art Sales Corporation">
+                </div>
+                <div class="logo-item">
+                    <img src="aboutMe/GFG.png" alt="Powerball">
+                </div>
+            </div>
+            <div class="logo-row">
+                <div class="logo-item">
+                    <img src="aboutMe/PCSO.png" alt="PCSO">
+                </div>
+                <div class="logo-item">
+                    <img src="aboutMe/cityHall.png" alt="City Hall - Baguio">
+                </div>
+                <div class="logo-item">
+                    <img src="aboutMe/philex.png" alt="Philex Mines">
+                </div>
+                <div class="logo-item">
+                    <img src="aboutMe/comelec.svg" alt="COMELEC">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section -->
+    <section class="qa-section">
+        <div class="qa-item">
+            <div class="question">What other talents or skills should I shine a spotlight on?</div>
+            <div class="answer">My journey has been a colorful mosaic—from epic chess blunders, being a Math wizard, a dance performer, choir gigs, all while sharpening my wits in strategic thinking and creative writing. However, 2024 presents a new challenge: MASTERING CHESS, which parallels UI/UX design in requiring creative thinking. My most cherished skill, though, is my passion for drawing, which began when I was six, inspired by a first-grade classmate's artistic flair. With an architect dad and an artsy mom, drawing seemed destined, but without that fateful encounter, who knows if I'd ever have picked up a pencil?
+            </div>
+        </div>
+        <div class="qa-item">
+            <div class="question">Who are the creative geniuses I look up to?</div>
+            <div class="answer">I've got plenty to share, but the top-tier on the list are <b>Lauren Lake</b>, the judge from Paternity Court—she embodies the ideal blend of intelligence, compassion, and enduring grace. Watching countless episodes of Paternity Court, I've found each one imparting valuable lessons, offering hope to women like myself who seek truth, love, forgiveness, and the opportunity for redemption every day. Then there's <b>Michael V.</b>, the Filipino comedian and a visual artist whose wit knows no bounds. And let's not forget <b>Ding Liren</b>, the humble chess genius whose moves I'm learning from. These individuals are true beacons of hope and talent.</div>
+        </div>
+        <div class="qa-item">
+            <div class="question">What's my life's design blueprint?</div>
+            <div class="answer">My philosophy has evolved over time. I once believed, "Doubt everything, find your own light." It still holds meaning, but finding my light doesn't mean doing everything alone. Through years in the design industry, I've come to understand that "Communication is the key." It may sound simple, but expressing your thoughts is how you find your light and your people. It’s about addressing issues that bother me and empathizing with others while maintaining critical thinking. In essence, real connection sparks the brightest light.</div>
+        </div>
+        <div class="qa-item">
+            <div class="question">Are there any other creative hats I'd love to wear?</div>
+            <div class="answer">Apart from my role as a UI/UX designer, I have a keen interest in animation. Bringing things to life and making them move brings me immense joy, much like creating Figma prototypes. <b>Animation</b> allows me to infuse movement into my creations—<i>I live to move things</i>. The idea of <b>Character Design</b> particularly in making <i>unearthly creatures</i> intrigues me because it unleashes my imagination without constraints or boundaries. As for logos, that's an area where I'm still honing my skills...or (Why not have someone else handle the logo creation while I take charge of the animation task?)<!--In the past, I held a position involving the management of sensitive data, which required me to diligently record vital information on a daily basis.--></div>
+        </div>
+    </section>
+
+    <footer id="contact" style="background-color: #F5F5F5; padding: 40px 40px;">
+        <p class="footer-links">
+            <div class="logo-footer" style="margin-bottom: 30px;"><img src="aboutMe/AprilKaye.svg" height="65px" width="auto" alt="logo"></div>
+            <a href="https://www.linkedin.com/in/april-kaye-muiālde-531305206" target="_blank" class="footer-link" style="margin-right: 10px; font-size: 18px; font-weight: bold;">LinkedIn</a>
+            <a href="https://www.behance.net/kiki51" target="_blank" class="footer-link" style="margin-right: 10px; font-size: 18px; font-weight: bold;">Behance</a>
+            <a href="https://www.figma.com/@milkayeoats" target="_blank" class="footer-link" style="margin-right: 10px; font-size: 18px; font-weight: bold;">Figma</a>
+            <a href="https://www.buymeacoffee.com/voidead0425" target="_blank" class="footer-link" style="margin-right: 10px; font-size: 18px; font-weight: bold;">Buy me a Coffee</a>
+        </p>
+        <p class="footer-details" style="margin-top: 40px; color: #888; font-size: 16px;">My passion lies in turning complex problems into simple, intuitive, and beautiful designs. Let's collaborate and create something exceptional together!</p>
+    </footer>
+
+    <!-- JavaScript for Audio Player -->
+    <script>
+        function addEvent() {
+            var player = new Plyr('#player', {
+                controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
+                autoplay: false,
+                hideControls: false,
+                clickToPlay: true,
+                keyboard: { focused: true, global: true }
+            });
+        }
+    </script>
+</body>
+</html>

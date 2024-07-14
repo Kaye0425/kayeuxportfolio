@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="mstile-150x150.ico" />
+    <title>Projects</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            color: black;
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 40px 40px 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: black;
+            transition: color 0.3s;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 40px;
+        }
+
+        nav ul li a {
+            color: gray;
+            text-decoration: none;
+            padding: 5px 10px;
+            font-weight: 400;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a.active {
+            color: black;
+            border-bottom: 2px solid black;
+        }
+
+        header.intro {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            padding: 0 40px;
+            background: url('your-image-url.jpg') no-repeat center center/cover;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header.intro h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 80px;
+            color: #1E1E1E;
+            margin: 0;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            transition: color 0.3s;
+        }
+
+        header.intro .subtext {
+            font-size: 20px;
+            margin-top: 20px;
+            opacity: 0.5;
+            animation: fadeIn 2s forwards 2s;
+            line-height: 1.5;
+            text-align: left;
+            transition: color 0.3s;
+            color: #636363 !important; /* Change the color here */
+        }
+        
+        header.intro .arrow-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            animation: bounce 2s infinite;
+            color: black;
+            transition: color 0.3s;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        header.intro {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            padding: 0 40px;
+            background: url('your-image-url.jpg') no-repeat center center/cover;
+            color: black;
+        }
+
+        header.intro h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 80px;
+            margin: 0;
+            transition: color 0.3s;
+        }
+
+        header.intro .subtext {
+            font-size: 20px;
+            margin-top: 20px;
+            opacity: 0.5;
+            line-height: 1.5;
+            text-align: left;
+            transition: color 0.3s;
+        }
+
+        .back-to-projects {
+            color: #444; /* dark gray */
+            text-decoration: none;
+            border-bottom: 2px solid #ddd; /* light gray */
+            font-size: 18px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+
+        .back-to-projects:hover,
+        .back-to-projects:focus {
+            color: gray;
+            border-bottom-color: #aaa; /* lighter gray */
+        }
+
+        .back-to-projects:active {
+            color: #444; /* dark gray */
+            border-bottom-color: #aaa; /* lighter gray */
+        }
+
+        .portfolio-content {
+            background-color: #F6FCFC;
+            height: auto; /* Adjust as needed */
+            overflow-y: auto; /* Enable scrolling for content */
+            position: relative; /* Add this for positioning the sticky element */
+        }
+
+        .portfolio-content h2 {
+            font-size: 48px;
+            font-family: 'Libre Baskerville', serif;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-content p {
+            font-size: 24px;
+            color: gray;
+            line-height: 1.5;
+        }
+        .portfolio-content img {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background: url('your-image-url.jpg') no-repeat center center/cover; /* Add 'cover' here */
+        }
+        .footer-link {
+            color: #444; /* dark gray */
+            text-decoration: none;
+            border-bottom: 2px solid #ddd; /* light gray */
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+
+        .footer-link:hover,
+        .footer-link:focus {
+            color: gray;
+            border-bottom-color: #aaa; /* lighter gray */
+        }
+
+        .footer-link:active {
+            color: #444; /* dark gray */
+            border-bottom-color: #aaa; /* lighter gray */
+        }
+
+        .footer-details {
+            color: #888; /* lighter gray */
+        }
+        
+        .logo-footer {
+            font-size: 36px;
+            font-weight: bold;
+            color: black;
+            transition: color 0.3s;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: none; /* Hide the button initially */
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .back-to-top span {
+            margin-left: 10px;
+            background-color: white;
+            padding: 5px 10px;
+            font-size: 28px;
+            font-weight: bold;
+            color: black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo"><img src="aboutMe/AprilKaye.svg" height="65px" width="auto" alt="logo"></div>
+        <ul>
+            <li><a href="#portfolio1" class="active">Work</a></li>
+            <li><a href="aboutMe.html">About</a></li>
+        </ul>
+    </nav>
+    <header class="intro">
+        <a href="helloAgain.html#portfolio1" class="back-to-projects">Back to Projects</a>
+        <h1>e-ScratchIt</h1>
+        <div class="subtext">Scratch it app where we enhanced convenience and reach</div>
+    </header>
+    <main class="portfolio-content">
+        <img src="playerApp/playerApp1.svg" alt="playerApp1" loading="eager|lazy" class="first-image">
+        <img src="playerApp/playerApp2.svg" alt="playerApp2" loading="eager|lazy">
+        <img src="playerApp/playerApp2-a.svg" alt="playerApp2-a" loading="eager|lazy" class="trigger-back-to-top">
+        <img src="playerApp/playerApp3.svg" alt="playerApp3" loading="eager|lazy">
+        <img src="playerApp/playerApp3-a.svg" alt="playerApp3-a" loading="eager|lazy">
+        <img src="playerApp/playerApp4.svg" alt="playerApp4" loading="eager|lazy">
+        <img src="playerApp/playerApp4-a.svg" alt="playerApp4-a" loading="eager|lazy">
+        <img src="playerApp/playerApp5.svg" alt="playerApp5" loading="eager|lazy">
+        <img src="playerApp/playerApp5-a.svg" alt="playerApp5-a" loading="eager|lazy">
+        <img src="playerApp/playerApp6.svg" alt="playerApp6" loading="eager|lazy">
+        <img src="playerApp/playerApp6-a.svg" alt="playerApp6" loading="eager|lazy">
+        <img src="playerApp/playerApp7.svg" alt="playerApp7" loading="eager|lazy">
+        <img src="playerApp/playerApp7-a.svg" alt="playerApp7-a" loading="eager|lazy">
+        <img src="playerApp/playerApp7-b.svg" alt="playerApp7-b" loading="eager|lazy">
+        <img src="playerApp/playerApp8.svg" alt="playerApp8" loading="eager|lazy">
+        <img src="playerApp/playerApp8-a.svg" alt="playerApp8-a" loading="eager|lazy">
+        <img src="playerApp/playerApp8-b.svg" alt="playerApp8-b" loading="eager|lazy">
+        <img src="playerApp/playerApp8-c.svg" alt="playerApp8-c" loading="eager|lazy">
+        <img src="playerApp/playerApp8-d.svg" alt="playerApp8-d" loading="eager|lazy">
+        <img src="playerApp/playerApp8-e.svg" alt="playerApp8-e" loading="eager|lazy">
+        <img src="playerApp/playerApp8-f.svg" alt="playerApp8-f" loading="eager|lazy">
+        <img src="playerApp/playerApp8-g.svg" alt="playerApp8-f" loading="eager|lazy">
+        <img src="playerApp/playerApp9.svg" alt="playerApp9" loading="eager|lazy">
+        <img src="playerApp/playerApp9-a.svg" alt="playerApp9-a" loading="eager|lazy">
+        <img src="playerApp/playerApp10.svg" alt="playerApp10" loading="eager|lazy">
+        <img src="playerApp/playerApp10-a.svg" alt="playerApp10-a" loading="eager|lazy">
+        <img src="playerApp/playerApp11.svg" alt="playerApp11" loading="eager|lazy">
+        <a href="eScratchit_AdminSite.html"><img src="playerApp/playerApp12.svg" alt="playerApp12" loading="eager|lazy"></a>
+
+       
+    </main>
+    </div>
+    <footer id="contact" style="background-color: #F5F5F5; padding: 40px 40px;">
+        <p class="footer-links">
+            <div class="logo-footer" style="margin-bottom: 30px;"><img src="aboutMe/AprilKaye.svg" height="65px" width="auto" alt="logo"></div>
+            <a href="https://www.linkedin.com/in/april-kaye-muiālde-531305206" target="_blank" class="footer-link" style="margin-right: 10px; font-size: 18px; font-weight: bold;">LinkedIn</a>
+            <a href="https://www.behance.net/kiki51" target="_blank" class="footer-link" style="margin-right: 10px; font-size: 18px; font-weight: bold;">Behance</a>
+            <a href="https://www.figma.com/@milkayeoats" target="_blank" class="footer-link" style="margin-right: 10px; font-size: 18px; font-weight: bold;">Figma</a>
+            <a href="https://www.buymeacoffee.com/voidead0425" target="_blank" class="footer-link" style="margin-right: 10px; font-size: 18px; font-weight: bold;">Buy me a Coffee</a>
+        </p>
+        <p class="footer-details" style="margin-top: 40px; color: #888; font-size: 16px;">My passion lies in turning complex problems into simple, intuitive, and beautiful designs. Let's collaborate and create something exceptional together!</p>
+    </footer>
+    
+    <!-- Back to top button -->
+    <div class="back-to-top" onclick="scrollToIntro()">
+        <span>Back to Top</span>
+    </div>
+     <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const navLinks = nav.querySelectorAll('ul li a');
+            const logo = nav.querySelector('.logo');
+            const intro = document.querySelector('header.intro');
+            const backToTop = document.querySelector('.back-to-top');
+            const triggerBackToTop = document.querySelector('.trigger-back-to-top');
+
+            const scrollPos = window.scrollY;
+            const introHeight = intro.offsetHeight;
+            const triggerPos = triggerBackToTop.offsetTop;
+
+            const scrollPercentage = Math.min(scrollPos / introHeight, 1);
+
+            const bgColorValue = Math.round(255 - (255 * scrollPercentage));
+            const textColorValue = Math.round(255 * scrollPercentage);
+            const backgroundColor = `rgb(${bgColorValue}, ${bgColorValue}, ${bgColorValue})`;
+            const textColor = `rgb(${textColorValue}, ${textColorValue}, ${textColorValue})`;
+
+            intro.style.backgroundColor = backgroundColor;
+            intro.querySelector('h1').style.color = textColor;
+            intro.querySelector('.subtext').style.color = textColor;
+            nav.style.backgroundColor = scrollPercentage > 0 ? '#444' : 'white';
+            logo.style.color = scrollPercentage > 0 ? 'lightgray' : 'black';
+            navLinks.forEach(link => link.style.color = scrollPercentage > 0 ? 'lightgray' : 'gray');
+
+            const sections = document.querySelectorAll('main section');
+
+            sections.forEach((section, index) => {
+                if (section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    navLinks[index].classList.add('active');
+                }
+            });
+
+            // Show or hide the back to top button
+            if (scrollPos >= triggerPos) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        function scrollToIntro() {
+            document.querySelector('.first-image').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
