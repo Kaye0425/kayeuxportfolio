@@ -216,9 +216,9 @@
             padding: 5% 10%;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Two columns */
-            grid-template-rows: auto auto; /* Two rows */
-            gap: 5%; /* Gap between items */
+            grid-template-columns: repeat(2, 1fr);  
+            grid-template-rows: auto auto;  
+            gap: 5%;  
         }
 
         .qa-item {
@@ -259,8 +259,8 @@
             padding: 40px;
             display: flex;
             justify-content: space-around;
-            align-items: stretch; /* Ensure items stretch to full height */
-            gap: 5%; /* Add 20px gap between items */
+            align-items: stretch;  
+            gap: 5%;  
         }
 
         .favorite-item {
@@ -268,7 +268,7 @@
             background-color: #f0f0f0; /* Light gray background */
             padding: 20px;
             border-radius: 10px;
-            flex: 1; /* Make items stretch to fill the available space evenly */
+            flex: 1;  
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -378,8 +378,7 @@
             width: 100%;
             /*filter: brightness(0); */
         }
-
-        /* Adjusting for two rows */
+ 
         .logo-row {
             display: flex;
             justify-content: center;
@@ -399,7 +398,9 @@
     </div>
 
     <nav>
-        <div class="logo"><img src="aboutMe/AprilKaye.svg" height="65px" width="auto" alt="logo"></div>
+        <div class="logo">
+            <a href="helloAgain.html" class="active"><img src="aboutMe/AprilKaye.svg" height="65px" width="auto" alt="logo"></a>
+        </div>
         <ul>
             <li><a href="helloAgain.html">Work</a></li>
             <li><a href="aboutMe.html" class="active">About</a></li>
@@ -463,19 +464,13 @@
                 <div class="logo-item">
                     <img src="aboutMe/dasc.svg" alt="Digital Art Sales Corporation">
                 </div>
-                <div class="logo-item">
-                    <img src="aboutMe/GFG.png" alt="Powerball">
-                </div>
             </div>
             <div class="logo-row">
                 <div class="logo-item">
+                    <img src="aboutMe/GFG.png" alt="Powerball">
+                </div>
+                <div class="logo-item">
                     <img src="aboutMe/PCSO.png" alt="PCSO">
-                </div>
-                <div class="logo-item">
-                    <img src="aboutMe/cityHall.png" alt="City Hall - Baguio">
-                </div>
-                <div class="logo-item">
-                    <img src="aboutMe/philex.png" alt="Philex Mines">
                 </div>
                 <div class="logo-item">
                     <img src="aboutMe/comelec.svg" alt="COMELEC">
@@ -520,7 +515,7 @@
     <script>
          window.addEventListener('load', function () {
             const preloader = document.getElementById('preloader');
-            preloader.style.display = 'none'; // Hide preloader when page is fully loaded
+            preloader.style.display = 'none';  
         });
 
         function addEvent() {
